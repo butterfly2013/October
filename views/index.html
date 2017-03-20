@@ -1,0 +1,72 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<style type="text/css">
+		.oct_box{
+			float:left;
+			clear:both;
+		}
+		.oct_box h1{
+			font-size:18px;
+		}
+		.oct_box div div{
+			text-align:center;
+			width:200px;
+			float:left;
+			margin:0 10px 5px 0
+		}
+		.oct_box div div img{
+			width:200px;
+		}
+		.oct_box div div div{
+			margin:0;
+		}
+		.oct_mask_none{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="oct_box">
+		<h1>十月|水果</h1>
+		<div>
+			<div class="oct_ele">
+				<img src="53589782809482112.jpg">
+				<div>苹果</div>
+			</div>
+			<div class="oct_mask_none">
+				我是遮罩层
+			</div>
+			<div class="oct_ele">
+				<img src="53589782809482112.jpg">
+				<div>苹果</div>
+			</div>
+			<div class="oct_mask_none">
+				我是遮罩层
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		var oct_eles = document.getElementsByClassName("oct_ele");
+		for(var i=0;i<oct_eles.length;i++){
+			oct_eles[i].onmousemove=function(event){
+				var parentNode = event.srcElement.parentNode;
+				var maskNode = parentNode.nextElementSibling;
+				console.log(maskNode);
+				maskNode.position='absolute';
+				maskNode.left = parentNode.left;
+				maskNode.top = parentNode.top;
+				maskNode.style.display = 'block';
+			}
+			oct_eles[i].onmouseout=function(event){
+				var parentNode = event.srcElement.parentNode;
+				var maskNode = parentNode.nextElementSibling;
+				maskNode.style.display = 'none';
+			}
+		}
+	</script>
+</body>
+</html>
